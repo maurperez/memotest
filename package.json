@@ -1,0 +1,24 @@
+{
+  "name": "tarea-clase-10",
+  "version": "1.0.0",
+  "description": "Juego tipo memotest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asus753/memotest.git"
+  },
+  "author": "mauro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asus753/memotest/issues"
+  },
+  "homepage": "https://github.com/asus753/memotest#readme",
+  "dependencies": {
+    "boostrap": "^2.0.0",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1"
+  }
+}
