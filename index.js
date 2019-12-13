@@ -28,23 +28,28 @@ function desordenar_array(array){
 
 function desordenar(){
 	const img_desordenado=desordenar_array(array_imagenes)
-
-	for (let i=1;i<=html_img.length;i++){
-		html_img[i-1].src=img_desordenado[i-1]
-	}
 }
 
 //--------------------------------------------------
 
 document.querySelector("#btn-comenzar").onclick=function(){
-	const tiempo_contador=60
-
+	let tiempo_contador=60
 	desordenar(array_imagenes)
+
+	//Manejando contador y boton comenzar
 	document.querySelector("#btn-comenzar").style.display="none"
-
-	document.querySelector("#cuenta-regresiva").style.display="inline"
 	document.querySelector("#cuenta-regresiva").textContent=tiempo_contador
-
-
-
+	document.querySelector("#cuenta-regresiva").style.display="inline"
+	
+	let contador= setInterval(function(){
+		tiempo_contador--
+		document.querySelector("#cuenta-regresiva").textContent=tiempo_contador
+		if(tiempo_contador===0){
+			document.querySelector("#cuenta-regresiva").style.display="none"
+			document.querySelector("#btn-comenzar").style.display="inline"
+			clearInterval(contador)
+		}
+	},1000)
 }
+
+//----------------------------------------------------
