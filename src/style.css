@@ -1,5 +1,6 @@
 img{
 	margin-bottom: 20px
+	
 }
 body{
 	background-color: #F0C288
@@ -14,6 +15,8 @@ body{
 .carta {
     margin-left:20px;
     margin-right:20px; 
+    margin-bottom: 20px
+    cursor: pointer;
 }
 
 
