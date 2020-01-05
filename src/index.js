@@ -138,169 +138,19 @@ document.querySelector("#btn-comenzar").onclick=function(){
 
 //----------------------------------------------------
 
-//Imagenes.onclick
-html_img[0].onclick=function(){
-	if(permitir_dar_vuelta(html_img[0])){
-		html_img[0].src=frutas_desordenadas[0]
-		html_img[0].alt="fruta"
-		html_img[0].style="cursor: default"
 
-		carta_dada_vuelta()
-	}
-
-
-}
-
-html_img[1].onclick=function(){
-	if(permitir_dar_vuelta(html_img[1])){
-		html_img[1].src=frutas_desordenadas[1]
-		html_img[1].alt="fruta"
-		html_img[1].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-
+document.querySelector("#tablero").onclick=function(e){
+	let $elemento=e.target
 	
-}
+	const numero_carta=(Number($elemento.id)-1)
 
-html_img[2].onclick=function(){
-	if(permitir_dar_vuelta(html_img[2])){
-		html_img[2].src=frutas_desordenadas[2]
-		html_img[2].alt="fruta"
-		html_img[2].style="cursor: default"
+	if($elemento.className=="carta"){
+		if (permitir_dar_vuelta($elemento)) {
+			$elemento.src=frutas_desordenadas[numero_carta]
+			$elemento.alt="fruta"
+			$elemento.style="cursor: default"
 
-		carta_dada_vuelta()
-	}
-}
-
-html_img[3].onclick=function(){
-	if(permitir_dar_vuelta(html_img[3])){
-		html_img[3].src=frutas_desordenadas[3]
-		html_img[3].alt="fruta"
-		html_img[3].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}	
-
-
-html_img[4].onclick=function(){
-	if(permitir_dar_vuelta(html_img[4])){
-		html_img[4].src=frutas_desordenadas[4]
-		html_img[4].alt="fruta"
-		html_img[4].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[5].onclick=function(){
-	if(permitir_dar_vuelta(html_img[5])){
-		html_img[5].src=frutas_desordenadas[5]
-		html_img[5].alt="fruta"
-		html_img[5].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[6].onclick=function(){
-	if(permitir_dar_vuelta(html_img[6])){
-		html_img[6].src=frutas_desordenadas[6]
-		html_img[6].alt="fruta"
-		html_img[6].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[7].onclick=function(){
-	if(permitir_dar_vuelta(html_img[7])){
-		html_img[7].src=frutas_desordenadas[7]
-		html_img[7].alt="fruta"
-		html_img[7].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[8].onclick=function(){
-	if(permitir_dar_vuelta(html_img[8])){
-		html_img[8].src=frutas_desordenadas[8]
-		html_img[8].alt="fruta"
-		html_img[8].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[9].onclick=function(){
-	if(permitir_dar_vuelta(html_img[9])){
-		html_img[9].src=frutas_desordenadas[9]
-		html_img[9].alt="fruta"
-		html_img[9].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[10].onclick=function(){
-	if(permitir_dar_vuelta(html_img[10])){
-		html_img[10].src=frutas_desordenadas[10]
-		html_img[10].alt="fruta"
-		html_img[10].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[11].onclick=function(){
-	if(permitir_dar_vuelta(html_img[11])){
-		html_img[11].src=frutas_desordenadas[11]
-		html_img[11].alt="fruta"
-		html_img[11].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[12].onclick=function(){
-	if(permitir_dar_vuelta(html_img[12])){
-		html_img[12].src=frutas_desordenadas[12]
-		html_img[12].alt="fruta"
-		html_img[12].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[13].onclick=function(){
-	if(permitir_dar_vuelta(html_img[13])){
-		html_img[13].src=frutas_desordenadas[13]
-		html_img[13].alt="fruta"
-		html_img[13].style="cursor: default"
-
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[14].onclick=function(){
-	if(permitir_dar_vuelta(html_img[14])){
-		html_img[14].src=frutas_desordenadas[14]
-		html_img[14].alt="fruta"
-		html_img[14].style="cursor: default"
-
-		carta_dada_vuelta()
-	}
-}
-
-html_img[15].onclick=function(){
-	if(permitir_dar_vuelta(html_img[15])){
-		html_img[15].src=frutas_desordenadas[15]
-		html_img[15].alt="fruta"
-		html_img[15].style="cursor: default"
-
-		carta_dada_vuelta()
+			carta_dada_vuelta()
+		}
 	}
 }
