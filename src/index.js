@@ -62,8 +62,9 @@ function comparar_cartas(){
 			setTimeout(function(){
 				cartas_boca_arriba.forEach(function(e){
 					e.src="imagenes/color-fondo.jpg"
-					e.style="pointer-events:none"
+					e.style="pointer-events:none; border-style: solid"
 					e.alt="carta-sacada"
+
 				})
 				una_ya_dada_vuelta=0
 			},500)	
