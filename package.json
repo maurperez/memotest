@@ -19,6 +19,7 @@
   "dependencies": {
     "boostrap": "^2.0.0",
     "bootstrap": "^4.4.1",
+    "cypress": "^3.8.2",
     "jquery": "^3.4.1"
   }
 }
