@@ -59,27 +59,45 @@ function comparar_cartas(){
 		})
 
 		if (cartas_boca_arriba[0].src===cartas_boca_arriba[1].src) {
-			setTimeout(function(){
+			/*setTimeout(function(){
 				cartas_boca_arriba.forEach(function(e){
 					e.src="imagenes/color-fondo.jpg"
-					e.style="pointer-events:none; border-style: solid"
+					e.style="border-style: solid"
 					e.alt="carta-sacada"
 
 				})
-				una_ya_dada_vuelta=0
-			},500)	
+		
+			},500)*/
+
+			cartas_boca_arriba.forEach(e => {
+				e.alt="carta-sacada"
+				setTimeout(()=>{
+					e.src="imagenes/color-fondo.jpg"
+					e.style="border-style: solid"
+				},500)
+			})
+			una_ya_dada_vuelta=0	
 
 			
 
 		}else{
-			setTimeout(function(){
+			/*setTimeout(function(){
 				cartas_boca_arriba.forEach(function(e){
 					e.src="imagenes/Fondo.jpg"
 					e.alt="parte-trasera"
 					e.style="cursor:pointer"
 				})
-				una_ya_dada_vuelta=0
-			},500)
+				
+			},500)*/
+
+			cartas_boca_arriba.forEach(e => {
+				e.alt="parte-trasera"
+				setTimeout(() => {
+					e.src="imagenes/Fondo.jpg"
+					e.style="cursor:pointer"
+				},500)
+			})
+			una_ya_dada_vuelta=0
 		}
 	}
 
@@ -96,7 +114,7 @@ document.querySelector("#btn-comenzar").onclick=function(){
 	html_img.forEach(function(e){
 		e.src="imagenes/Fondo.jpg"
 		e.alt="parte-trasera"
-		e.style="pointer-events:''; cursor: pointer;"
+		e.style="cursor: pointer;"
 
 	})
 
