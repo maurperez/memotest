@@ -1,42 +1,8 @@
 // Test completos del programa con cypress
+/// <reference types="Cypress" />
 
 const URL="192.168.1.37:8080"
 const NUMERO_CUADROS=16
-const array_imagenes_fortest=["imagenes/Anana.jpg",
-	"imagenes/Anana.jpg",
-	"imagenes/Banana.jpeg",
-	"imagenes/Banana.jpeg",
-	"imagenes/Frutilla.jpg",
-	"imagenes/Frutilla.jpg",
-	"imagenes/Manzana.jpg",
-	"imagenes/Manzana.jpg",
-	"imagenes/Naranja.jpg",
-	"imagenes/Naranja.jpg",
-	"imagenes/Pera.jpg",
-	"imagenes/Pera.jpg",
-	"imagenes/Sandia.jpg",
-	"imagenes/Sandia.jpg",
-	"imagenes/Uva.jpg",
-	"imagenes/Uva.jpg"
-	]
-
-const array_imagenes_fortest2=["imagenes/Anana.jpg",
-	"imagenes/Anana.jpg",
-	"imagenes/Banana.jpeg",
-	"imagenes/Banana.jpeg",
-	"imagenes/Frutilla.jpg",
-	"imagenes/Frutilla.jpg",
-	"imagenes/Manzana.jpg",
-	"imagenes/Manzana.jpg",
-	"imagenes/Naranja.jpg",
-	"imagenes/Naranja.jpg",
-	"imagenes/Pera.jpg",
-	"imagenes/Pera.jpg",
-	"imagenes/Sandia.jpg",
-	"imagenes/Sandia.jpg",
-	"imagenes/Uva.jpg",
-	"imagenes/Uva.jpg"
-	]
 
 context("memotest", () => {
 
@@ -51,25 +17,105 @@ context("memotest", () => {
 	})
 
 	it("Verificando la aleatoriedad de los cuadros",() => {
-		cy.window().then(win => {
-			let primera_vez = win.desordenar_array(array_imagenes_fortest)
+		let primera_vuelta=[]
+		let segunda_vuelta=[]
 
-			let segunda_vez = win.desordenar_array(array_imagenes_fortest2)
+		cy.get("#btn-comenzar").click()
 
-			expect(primera_vez).to.deep.not.equal(segunda_vez)
+		cy.get("img").then(imagenes => {
+			imagenes.each((i,e) => {
+				e.click()
+				primera_vuelta.push(e.src)
+			})
 		})
+
+		cy.visit(URL)
+
+		cy.get("img").then(imagenes => {
+			imagenes.each((i,e) => {
+				e.click()
+				segunda_vuelta.push(e.src)
+			})
+		})
+
+		cy.wrap(primera_vuelta).should('not.deep.equal', segunda_vuelta)
 	})
 
 	it("Resolucion del juego", () => {
 		cy.get("#btn-comenzar").click()
-		let cuadros=[]
-		cy.get("img").each((e)=>{
-			cuadros.push(e)
-		})
 
-		cy.wrap(cuadros).each((e)=>{	//No puede lograr que haga los clicks despacio
-			e.click()
-			cy.wait(501)
+		cy.get("img").then(imagenes => {
+			let fruta_img=[]
+
+			imagenes.each((i,e) => {
+				e.click()
+				fruta_img.push(e)
+			})
+			console.log(fruta_img)
+
+			const dicCartas=agrupar_cartas(fruta_img)
+
+			for(const fruta in dicCartas){					//Este funciona funciona pero no deja ver nada del proceso
+				(dicCartas[fruta]).forEach(e => {
+					e.click()
+				})
+
+			}
+
+			dicCartas.forEach(e => {						//dicCartas no es una funcion
+				cy.get(e[0]).click()
+				cy.get(e[1]).click()
+			})
+
+
+
+
+			
+
 		})
+	
 	})
 })
+
+
+
+
+
+
+function agrupar_cartas(cartas){
+	let diccionario_cartas={
+		banana:[],
+		manzana:[],
+		naranja:[],
+		uva:[],
+		anana:[],
+		frutilla:[],
+		pera:[],
+		sandia:[],
+	}
+
+
+	cartas.forEach(e => {
+		if(((e.src).search("banana"))!== -1){
+			diccionario_cartas.banana.push(e)
+		}else if(((e.src).search("manzana"))!== -1){
+			diccionario_cartas.manzana.push(e)
+		}else if(((e.src).search("naranja"))!== -1){
+			diccionario_cartas.naranja.push(e)
+		}else if(((e.src).search("uva"))!== -1){
+			diccionario_cartas.uva.push(e)
+		}else if(((e.src).search("anana"))!== -1){
+			diccionario_cartas.anana.push(e)
+		}else if(((e.src).search("frutilla"))!== -1){
+			diccionario_cartas.frutilla.push(e)
+		}else if(((e.src).search("pera"))!== -1){
+			diccionario_cartas.pera.push(e)
+		}else if(((e.src).search("sandia"))!== -1){
+			diccionario_cartas.sandia.push(e)
+		}
+	})
+
+	console.log(diccionario_cartas)
+	
+	return diccionario_cartas
+}
