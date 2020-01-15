@@ -59,16 +59,6 @@ function comparar_cartas(){
 		})
 
 		if (cartas_boca_arriba[0].src===cartas_boca_arriba[1].src) {
-			/*setTimeout(function(){
-				cartas_boca_arriba.forEach(function(e){
-					e.src="imagenes/color-fondo.jpg"
-					e.style="border-style: solid"
-					e.alt="carta-sacada"
-
-				})
-		
-			},500)*/
-
 			cartas_boca_arriba.forEach(e => {
 				e.alt="carta-sacada"
 				setTimeout(()=>{
@@ -81,15 +71,6 @@ function comparar_cartas(){
 			
 
 		}else{
-			/*setTimeout(function(){
-				cartas_boca_arriba.forEach(function(e){
-					e.src="imagenes/Fondo.jpg"
-					e.alt="parte-trasera"
-					e.style="cursor:pointer"
-				})
-				
-			},500)*/
-
 			cartas_boca_arriba.forEach(e => {
 				e.alt="parte-trasera"
 				setTimeout(() => {
