@@ -3,16 +3,7 @@
 
 const URL="192.168.1.37:8080"
 const NUMERO_CUADROS=16
-let diccionario_cartas={
-	banana:[],
-	manzana:[],
-	naranja:[],
-	uva:[],
-	anana:[],
-	frutilla:[],
-	pera:[],
-	sandia:[],
-}
+let diccionario_cartas=obtenerDiccionarioCartasVacio
 
 
 context("memotest", () => {
@@ -81,7 +72,7 @@ context("memotest", () => {
             })
 
             cy.get("#cuenta-regresiva").should('have.text','Felicitaciones, has ganado!').then(()=>{
-                vaciarDiccionario()
+                let diccionario_cartas=obtenerDiccionarioCartasVacio
                 
             })
         })
@@ -142,8 +133,8 @@ function agrupar_cartas(e){
 	
 }
 
-function vaciarDiccionario(){
-    diccionario_cartas={
+function obtenerDiccionarioCartasVacio(){
+    const diccionarioCartasOriginal={
         banana:[],
         manzana:[],
         naranja:[],
@@ -153,4 +144,7 @@ function vaciarDiccionario(){
         pera:[],
         sandia:[],
     }
+
+    return Object.assign({},diccionarioCartasOriginal)
 }
+
