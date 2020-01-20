@@ -67,6 +67,7 @@ context("memotest", () => {
         })
 
         it("resolviendo", ()=>{
+            
             Object.values(diccionario_cartas).forEach(e => {					
                 cy.get(e[0]).click()
                 cy.get(e[1]).click()
@@ -115,27 +116,17 @@ context("memotest", () => {
 
 })
 
+
 function agrupar_cartas(e){
     
+    const frutaCarta = e.src.replace("http://192.168.1.37:8080/imagenes/", "").replace(".jpg", "") //funciona
 
-	if(((e.src).search("banana"))!== -1){
-		diccionario_cartas.banana.push(e)
-	}else if(((e.src).search("manzana"))!== -1){
-		diccionario_cartas.manzana.push(e)
-	}else if(((e.src).search("naranja"))!== -1){
-		diccionario_cartas.naranja.push(e)
-	}else if(((e.src).search("uva"))!== -1){
-		diccionario_cartas.uva.push(e)
-	}else if(((e.src).search("anana"))!== -1){
-		diccionario_cartas.anana.push(e)
-	}else if(((e.src).search("frutilla"))!== -1){
-		diccionario_cartas.frutilla.push(e)
-	}else if(((e.src).search("pera"))!== -1){
-		diccionario_cartas.pera.push(e)
-	}else if(((e.src).search("sandia"))!== -1){
-		diccionario_cartas.sandia.push(e)
-	}
-	
+    if(diccionario_cartas[frutaCarta]){
+        diccionario_cartas[frutaCarta].push(e)
+    }else{
+        diccionario_cartas[frutaCarta] = [e]
+    }
+
 }
 
 
