@@ -3,7 +3,8 @@
 
 const URL="192.168.1.37:8080"
 const NUMERO_CUADROS=16
-let diccionario_cartas=obtenerDiccionarioCartasVacio
+let diccionario_cartas = obtenerDiccionarioCartasVacio()
+
 
 
 context("memotest", () => {
@@ -72,7 +73,9 @@ context("memotest", () => {
             })
 
             cy.get("#cuenta-regresiva").should('have.text','Felicitaciones, has ganado!').then(()=>{
-                let diccionario_cartas=obtenerDiccionarioCartasVacio
+                
+                diccionario_cartas=obtenerDiccionarioCartasVacio()
+                
                 
             })
         })
@@ -97,6 +100,7 @@ context("memotest", () => {
 
         })
 
+        
         it('resolviendo', ()=>{
             Object.values(diccionario_cartas).forEach(e => {					
                 cy.get(e[0]).click()
@@ -112,6 +116,7 @@ context("memotest", () => {
 })
 
 function agrupar_cartas(e){
+    
 
 	if(((e.src).search("banana"))!== -1){
 		diccionario_cartas.banana.push(e)
@@ -133,6 +138,7 @@ function agrupar_cartas(e){
 	
 }
 
+
 function obtenerDiccionarioCartasVacio(){
     const diccionarioCartasOriginal={
         banana:[],
@@ -145,6 +151,6 @@ function obtenerDiccionarioCartasVacio(){
         sandia:[],
     }
 
-    return Object.assign({},diccionarioCartasOriginal)
+    return Object.assign({},diccionarioCartasOriginal) //Clonacion del diccionario de cartas original
 }
 
